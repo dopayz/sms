@@ -1,0 +1,226 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="SmsOperatorImpService" targetNamespace="http://sms.jwsserver.server.ema.ctc.com/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://sms.jwsserver.server.ema.ctc.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema targetNamespace="http://sms.jwsserver.server.ema.ctc.com/" version="1.0" xmlns:tns="http://sms.jwsserver.server.ema.ctc.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="com.ctc.ema.server.jwsserver.sms.BalanceRes" type="tns:balanceRes"/>
+<xs:element name="com.ctc.ema.server.jwsserver.sms.MoMessageRes" type="tns:moMessageRes"/>
+<xs:element name="com.ctc.ema.server.jwsserver.sms.MoMessageResDetail" type="tns:moMessageResDetail"/>
+<xs:element name="com.ctc.ema.server.jwsserver.sms.MtMessage" type="tns:mtMessage"/>
+<xs:element name="com.ctc.ema.server.jwsserver.sms.MtMessageRes" type="tns:mtMessageRes"/>
+<xs:element name="com.ctc.ema.server.jwsserver.sms.MtMessageResDetail" type="tns:mtMessageResDetail"/>
+<xs:element name="com.ctc.ema.server.jwsserver.sms.ReportMessageRes" type="tns:reportMessageRes"/>
+<xs:element name="com.ctc.ema.server.jwsserver.sms.ReportMessageResDetail" type="tns:reportMessageResDetail"/>
+<xs:complexType name="moMessageRes">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="resDetail" nillable="true" type="tns:moMessageResDetail"/>
+<xs:element minOccurs="0" name="revStat" type="xs:string"/>
+<xs:element minOccurs="0" name="revStatDes" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="moMessageResDetail">
+<xs:sequence>
+<xs:element minOccurs="0" name="content" type="xs:string"/>
+<xs:element minOccurs="0" name="demo" type="xs:string"/>
+<xs:element minOccurs="0" name="phoneNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="revTime" type="xs:dateTime"/>
+<xs:element minOccurs="0" name="subCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="reportMessageRes">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="resDetail" nillable="true" type="tns:reportMessageResDetail"/>
+<xs:element minOccurs="0" name="subStat" type="xs:string"/>
+<xs:element minOccurs="0" name="subStatDes" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="reportMessageResDetail">
+<xs:sequence>
+<xs:element minOccurs="0" name="phoneNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="smsId" type="xs:string"/>
+<xs:element minOccurs="0" name="stat" type="xs:string"/>
+<xs:element minOccurs="0" name="statDes" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="mtMessage">
+<xs:sequence>
+<xs:element minOccurs="0" name="sendTime" type="xs:string"/>
+<xs:element minOccurs="0" name="content" type="xs:string"/>
+<xs:element minOccurs="0" name="demo" type="xs:string"/>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="phoneNumber" nillable="true" type="xs:string"/>
+<xs:element minOccurs="0" name="smsId" type="xs:string"/>
+<xs:element minOccurs="0" name="subCode" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="mtMessageRes">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="resDetail" nillable="true" type="tns:mtMessageResDetail"/>
+<xs:element minOccurs="0" name="smsId" type="xs:string"/>
+<xs:element minOccurs="0" name="subStat" type="xs:string"/>
+<xs:element minOccurs="0" name="subStatDes" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="mtMessageResDetail">
+<xs:sequence>
+<xs:element minOccurs="0" name="phoneNumber" type="xs:string"/>
+<xs:element minOccurs="0" name="stat" type="xs:string"/>
+<xs:element minOccurs="0" name="statDes" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="balanceRes">
+<xs:sequence>
+<xs:element minOccurs="0" name="demo" type="xs:string"/>
+<xs:element minOccurs="0" name="revStat" type="xs:string"/>
+<xs:element minOccurs="0" name="revStatDes" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType final="#all" name="mtMessageArray">
+<xs:sequence>
+<xs:element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="tns:mtMessage"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+
+  </wsdl:types>
+  <wsdl:message name="getBalanceResponse">
+    <wsdl:part name="return" type="tns:balanceRes">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendSmsResponse">
+    <wsdl:part name="return" type="tns:mtMessageRes">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="bathSendSms">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg2" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg3" type="tns:mtMessageArray">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="bathSendSmsResponse">
+    <wsdl:part name="return" type="tns:mtMessageRes">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBalance">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getReportResponse">
+    <wsdl:part name="return" type="tns:reportMessageRes">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getReport">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="sendSms">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg2" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg3" type="tns:mtMessage">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSmsResponse">
+    <wsdl:part name="return" type="tns:moMessageRes">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSms">
+    <wsdl:part name="arg0" type="xsd:string">
+    </wsdl:part>
+    <wsdl:part name="arg1" type="xsd:string">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ISmsOperator">
+    <wsdl:operation name="getSms">
+      <wsdl:input message="tns:getSms" name="getSms">
+    </wsdl:input>
+      <wsdl:output message="tns:getSmsResponse" name="getSmsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReport">
+      <wsdl:input message="tns:getReport" name="getReport">
+    </wsdl:input>
+      <wsdl:output message="tns:getReportResponse" name="getReportResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSms">
+      <wsdl:input message="tns:sendSms" name="sendSms">
+    </wsdl:input>
+      <wsdl:output message="tns:sendSmsResponse" name="sendSmsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBalance">
+      <wsdl:input message="tns:getBalance" name="getBalance">
+    </wsdl:input>
+      <wsdl:output message="tns:getBalanceResponse" name="getBalanceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bathSendSms">
+      <wsdl:input message="tns:bathSendSms" name="bathSendSms">
+    </wsdl:input>
+      <wsdl:output message="tns:bathSendSmsResponse" name="bathSendSmsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SmsOperatorImpServiceSoapBinding" type="tns:ISmsOperator">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getReport">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="getReport">
+        <soap:body namespace="http://sms.jwsserver.server.ema.ctc.com/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getReportResponse">
+        <soap:body namespace="http://sms.jwsserver.server.ema.ctc.com/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSms">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="getSms">
+        <soap:body namespace="http://sms.jwsserver.server.ema.ctc.com/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSmsResponse">
+        <soap:body namespace="http://sms.jwsserver.server.ema.ctc.com/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBalance">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="getBalance">
+        <soap:body namespace="http://sms.jwsserver.server.ema.ctc.com/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBalanceResponse">
+        <soap:body namespace="http://sms.jwsserver.server.ema.ctc.com/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendSms">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="sendSms">
+        <soap:body namespace="http://sms.jwsserver.server.ema.ctc.com/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="sendSmsResponse">
+        <soap:body namespace="http://sms.jwsserver.server.ema.ctc.com/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="bathSendSms">
+      <soap:operation soapAction="" style="rpc"/>
+      <wsdl:input name="bathSendSms">
+        <soap:body namespace="http://sms.jwsserver.server.ema.ctc.com/" use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="bathSendSmsResponse">
+        <soap:body namespace="http://sms.jwsserver.server.ema.ctc.com/" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SmsOperatorImpService">
+    <wsdl:port binding="tns:SmsOperatorImpServiceSoapBinding" name="SmsOperatorImpPort">
+      <soap:address location="http://172.16.2.101:8080/ema/webService/smsOper"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
