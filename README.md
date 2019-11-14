@@ -19,7 +19,7 @@
 ​	3.1.发送表：SMSOUT_
 
 ```mssql
-`CREATE TABLE [dbo].[SMSOUT_](
+CREATE TABLE [dbo].[SMSOUT_](
     [id] [varchar](255) NOT NULL,
     [rNum] [varchar](255) NULL,
     [rPerson] [varchar](255) NULL,
@@ -29,12 +29,12 @@
     [isSuccess] [int] NULL,
     [type] [int] NULL,
     [isVisible] [tinyint] NULL
-)`
+)
 ```
 ​	3.2.接收表：SMSIN_
 
 ```mssql
-`CREATE TABLE [dbo].[SMSIN_](
+CREATE TABLE [dbo].[SMSIN_](
     [id] [varchar](255) NOT NULL,
     [sNum] [varchar](255) NULL,
     [sPerson] [varchar](255) NULL,
@@ -43,7 +43,7 @@
     [date] [datetime] NULL,
     [isVisible] [tinyint] NULL,
     [isRead] [tinyint] NULL
-)`
+)
 ```
 ​	
 ## 4.资源下载
